@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stop & prevent events</title>
+    <style>
+        @import 'style.css';
+    </style>
+</head>
+<body>
+<h1>Stop & prevent events</h1>
+
+<h2>Вспливання та перехоплення</h2>
+
+<p>При виклику події вона відбувається спочатку конкретно на тому елементі, на якому вона
+    відбулась, але на цьому не зупиняється і відбувіється також на усіх батьківських елементах.
+    Це поведінка за замовчуванням, і завдяки ній, наприклад, відбувається перехід за посиланням,
+    хоча ми і клікнули по суті не по самому якорю, а по картинці, яку він огортає </p>
+
+<p>Першою фазою є перехоплення події, тому перша "хвиля" повідомлень надходить від capture (від html до елементу,
+    на якому відбулась подія). Другою фазою є bubbling, коли </p>
+<div class="example1">
+
+    <div id="box1" class="red box">
+        <div id="box2" class="green box">
+            <div id="box3" class=" blue box">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>Проте якщо ми маємо однотипні події на вкладених елементах, це може спричинити "неочікуваний" і
+    недоречний запуск функцій (Це стосується майже всіх подій, за винятком хіба focus).
+    Для попередження каскадного запуску існує функція stopPropagation().</p>
+<div class="button-container">
+    <div id="languages">
+        <label>
+            <input type="radio" name="lang" id="lang-ua" checked>UA
+        </label>
+        <label>
+            <input type="radio" name="lang" id="lang-ru">RU
+        </label>
+        <label>
+            <input type="radio" name="lang" id="lang-eng">ENG
+        </label>
+    </div>
+</div>
+<hr />
+<h2>Попередження подій</h2>
+<p>preventDefault відміняє поведінку елементів за замовчуванням, проте не зупиняє вспливання події. Вона використана
+для того, щоб при кліку на label подія не поширювалася на input</p>
+<hr />
+<p>Крім того, якщо на одному елементі навішені кілька подій, за допомогою stopImmediatePropagation можна
+    попередити виклик іншої функції і вспливання водночас</p>
+
+    <div class="container">
+        <label>
+            <input type="checkbox" data-lang="ua" name="language" checked>UA
+        </label>
+        <label>
+            <input type="checkbox" data-lang="ru" name="language">RU
+        </label>
+        <label>
+            <input type="checkbox" data-lang="en" name="language">ENG
+        </label>
+    </div>
+
+
+
+<script src="script.js"></script>
+</body>
+
+</html>
