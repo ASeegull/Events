@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
     </style>
 </head>
 <body>
-<h1>Stop & prevent events</h1>
+<h1>Вспливання та перехоплення</h1>
 
 <h2>Вспливання та перехоплення</h2>
 
@@ -49,26 +48,25 @@
         </label>
     </div>
 </div>
-<hr />
+<hr/>
 <h2>Попередження подій</h2>
 <p>preventDefault відміняє поведінку елементів за замовчуванням, проте не зупиняє вспливання події. Вона використана
-для того, щоб при кліку на label подія не поширювалася на input</p>
-<hr />
+    для того, щоб при кліку на label подія не поширювалася на input</p>
+<hr/>
 <p>Крім того, якщо на одному елементі навішені кілька подій, за допомогою stopImmediatePropagation можна
     попередити виклик іншої функції і вспливання водночас</p>
 
-    <div class="container">
-        <label>
-            <input type="checkbox" data-lang="ua" name="language" checked>UA
-        </label>
-        <label>
-            <input type="checkbox" data-lang="ru" name="language">RU
-        </label>
-        <label>
-            <input type="checkbox" data-lang="en" name="language">ENG
-        </label>
-    </div>
-
+<div class="container">
+    <label>
+        <input type="checkbox" data-lang="ua" name="language" checked>UA
+    </label>
+    <label>
+        <input type="checkbox" data-lang="ru" name="language">RU
+    </label>
+    <label>
+        <input type="checkbox" data-lang="en" name="language">ENG
+    </label>
+</div>
 
 
 <script src="script.js"></script>

@@ -13,6 +13,7 @@ function bubble() {
     alert(this.classList);
 }
 
+//First example:END
 
 function onForm() {
     alert("stopPropagation зупиняє вспливання. Це повідомлення не з'являється, коли клікається по самому input");
@@ -29,26 +30,34 @@ function clickOnLabel(event) {
     event.preventDefault();
 }
 
-function clickOnCheckbox () {
-alert('На клік на чекбоксі навішені два слухачі подій');
-event.stopImmediatePropagation();
+
+document.querySelector('.button-container').addEventListener('click', onForm, false);
+
+document.querySelectorAll('[type=radio]').forEach(function (item) {
+    item.addEventListener('click', clickOnInput, false);
+});
+
+document.querySelectorAll('.button-container label').forEach(function (item) {
+    item.addEventListener('click', clickOnLabel, false);
+});
+
+//Second example:END
+
+
+function clickOnCheckbox() {
+    alert('На клік на чекбоксі навішені два слухачі подій');
+    event.stopImmediatePropagation();
 }
 
 function clickCheckbox() {
     var message = this.getAttribute('data-lang');
-    alert(message);
+    alert(message); //This message tou will never see because of stopImmediatePropagation
 }
 
-document.querySelector('.button-container').addEventListener('click', onForm, false);
+document.querySelectorAll('[type=checkbox]').forEach(function (item) {
+    item.addEventListener('click', clickOnCheckbox, false);
+});
 
-document.querySelectorAll('[type=radio]').forEach(function(item) {
-    item.addEventListener('click', clickOnInput, false);});
-
-document.querySelectorAll('.button-container label').forEach(function(item) {
-    item.addEventListener('click', clickOnLabel, false);});
-
-document.querySelectorAll('[type=checkbox]').forEach(function(item) {
-    item.addEventListener('click', clickOnCheckbox, false);});
-
-document.querySelectorAll('[type=checkbox]').forEach(function(item) {
-    item.addEventListener('click', clickCheckbox, false);});
+document.querySelectorAll('[type=checkbox]').forEach(function (item) {
+    item.addEventListener('click', clickCheckbox, false);
+});
